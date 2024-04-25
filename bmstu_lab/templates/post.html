@@ -1,0 +1,30 @@
+{% load static %}
+
+<div class="instagram-post card mb-3">
+    <div class="post-header card-header">
+        <div class="avatar-container">
+            <img src="{% static '/images/avatar.jpg' %}" alt="Аватар пользователя" class="img-fluid rounded-circle avatar">
+        </div>
+        <div class="user-info">
+            <h3 class="card-title">{{ post.author.user.username }}</h3>
+        </div>
+    </div>
+    <div class="post-content card-body">
+        {% if post.photo %}
+            <img src="{{ post.photo }}" alt="Изображение поста" class="img-fluid rounded">
+        {% else %}
+            <img src="{% static '/images/photo6.jpg' %}" alt="Изображение поста" class="img-fluid rounded">
+        {% endif %}
+        <p class="card-text">{{ post.text|slice:":25" }}...</p>
+    </div>
+    <div class="post-footer card-footer text-muted">
+        <div class="likes">
+            <span class="heart-icon">❤</span>
+            <span>{{ post.rating }}</span>
+        </div>
+        <div class="comments">
+            <span class="comment-icon">💬</span>
+            <span>0</span>
+        </div>
+    </div>
+</div>

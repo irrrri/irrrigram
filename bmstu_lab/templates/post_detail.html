@@ -1,0 +1,31 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="container mt-5">
+    <div class="post_detail">
+      <h1 class="mb-4">Детали поста</h1>
+      <p class="font-weight-bold">Автор: {{ post.author.user.username }}</p>
+      {% if post.photo %}
+        <img src="{{ post.photo }}" alt="Изображение поста" class="img-fluid rounded">
+      {% else %}
+        <img src="{% static '/images/photo6.jpg' %}" alt="Изображение поста" class="img-fluid rounded">
+      {% endif %}
+      <p class="font-weight-bold">Текст: {{ post.text }}</p>
+      <p class="font-weight-bold">Количество лайков: {{ post.rating }}</p>
+      <p class="font-weight-bold">Количество комментариев: 0</p>
+      <div class="timestamp">
+            <span class="font-weight-bold">Дата: {{ post.date|date:"F d, Y H:i" }}</span>
+      </div>
+    </div>
+    <div class="separator"></div>
+    <div class="comments">
+      <h2>Комментарии</h2>
+      {% for comment in comments %}
+          {% with comment=comment %}
+              {% include "comment.html" %}
+          {% endwith %}
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,34 @@
+main {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 800px;
+    background-color: #F0EBF4;
+}
+
+.feed, .post_detail{
+    margin-top: 80px;
+}
+
+.avatar-container img {
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+}
+
+.navbar {
+     background-color: #F0EBF4;
+}
+
+.separator {
+    border-bottom: 1px solid #ccc;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.comment {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}

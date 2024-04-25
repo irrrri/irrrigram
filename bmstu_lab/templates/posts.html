@@ -1,0 +1,19 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="feed">
+    <h2>Посты</h2>
+    <form class="form-inline mb-3" action="/sendText" method="post">
+        {% csrf_token %}
+        <label for="num_records" class="mr-2">Введите количество записей: </label>
+        <input type="number" id="num_records" name="num_records" min="1" value="1" class="form-control mr-2">
+        <button type="submit" class="btn btn-primary">Применить</button>
+    </form>
+    {% for post in posts %}
+      <a href="{% url 'post_detail' post_id=post.id %}">
+        {% include 'post.html' with post=post %}
+      </a>
+    {% endfor %}
+  </div>
+{% endblock %}
